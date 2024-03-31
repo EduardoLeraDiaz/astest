@@ -4,10 +4,15 @@ framework:
     #csrf_protection: true
 
     # Note that the session will be started ONLY if you read or write from it.
-    session: true
+    session: false
 
     #esi: true
     #fragments: true
+    http_client:
+        scoped_clients:
+            bgg.client:
+                base_uri: 'https://boardgamegeek.com/xmlapi/boardgame/'
+
 
 when@test:
     framework:

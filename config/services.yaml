@@ -16,9 +16,12 @@ services:
     App\:
         resource: '../src/'
         exclude:
-            - '../src/DependencyInjection/'
-            - '../src/Entity/'
+            - '../src/Application/*/UseCase/*Request'
+            - '../src/Application/*/UseCase/*Response'
+            - '../src/Domain/*/Entity/'
             - '../src/Kernel.php'
-
+    App\Application\Common\ExceptionListener\HTTPExceptionListener:
+        tags: [kernel.event_listener]
+        arguments: ["%kernel.environment%"]
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
